@@ -1527,108 +1527,12 @@ body.modal-open {
       </section>
 
 
-      <!-- ===== ABOUT ===== -->
-      <section id="view-about" class="spa-section">
-        <div class="page-header fade-in active">
-          <h2 class="page-title">About Norepted</h2>
-          <p class="page-sub">A YouTube unblocker built for school &amp; work environments.</p>
-        </div>
-        <div class="card fade-in active">
-          <h3 style="color:var(--accent);margin:0 0 10px;">What is it?</h3>
-          <p>Norepted embeds YouTube videos using the same method a teacher uses to embed videos in Google Slides — the official embed URL. It extracts your video ID and loads it in an iframe with no YouTube interface, no ads, and no browsing history.</p>
-          <a href="https://github.com/wea-f/Norepted" target="_blank" style="color:var(--accent);">GitHub Repository →</a>
-        </div>
-        <div class="card fade-in active">
-          <h3 style="color:var(--accent);margin:0 0 12px;">Features</h3>
-          <ul class="feature-list">
-            <li><span class="fl-badge">✓</span> Limited* ads in embeds</li>
-            <li><span class="fl-badge">✓</span> YouTube search &amp; Shorts scroller</li>
-            <li><span class="fl-badge">✓</span> Multi-tab proxy browser</li>
-            <li><span class="fl-badge">✓</span> Tab cloaking (looks like Google Drive)</li>
-            <li><span class="fl-badge">✓</span> History wipe shortcut</li>
-            <li><span class="fl-badge">✓</span> Saves your open videos across sessions</li>
-          </ul>
-        </div>
-        
-        <div class="separator-line fade-in active"></div>
-      </section>
-
-    </main>
+     
     <!-- ===== FOOTER ===== -->
     <footer id="site-footer" class="fade-in active">
       
     </footer>
-    <!-- ===== v1.7 CHANGELOG POP-UP ===== -->
-    <div id="changelog-modal" class="cl-backdrop hidden" role="dialog" aria-modal="true" aria-label="What's new in v1.7">
-  <div class="cl-box">
-    <div class="cl-date" style="text-align: center; font-size: 0.85em; color: #888;">-- 07/04/26 --</div>
-      
-    
-  </div>
-</div>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="script.js"></script>
-  
-
-  
-    <script id="rendered-js">
-// ─── NAVIGATION ───────────────────────────────────────
-function switchTab(tabName) {
-  document.querySelectorAll('.spa-section').forEach(el => el.classList.remove('active-section'));
-
-  const target = document.getElementById('view-' + tabName);
-  if (!target) return;
-  target.classList.add('active-section');
-
-  // Show / hide site chrome for browser mode
-  const navbar = document.getElementById('site-navbar');
-  const footer = document.getElementById('site-footer');
-  if (tabName === 'browser') {
-    if (navbar) navbar.style.display = 'none';
-    if (footer) footer.style.display = 'none';
-  } else {
-    if (navbar) navbar.style.display = '';
-    if (footer) footer.style.display = '';
-    // Only scroll to top when NOT adding a video from search
-    window.scrollTo(0, 0);
-  }
-
-  // Update active nav highlight
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active-nav'));
-  const activeBtn = document.getElementById('nav-' + tabName);
-  if (activeBtn) activeBtn.classList.add('active-nav');
-
-  // Retrigger fade-ins for newly shown section
-  if (window.fadeInObserver) {
-    target.querySelectorAll('.fade-in:not(.active)').forEach(el => window.fadeInObserver.observe(el));
-  }
-
-  // Pause shorts when navigating away, restore when coming back
-  const shortsWrap = document.getElementById('shortsFrameWrap');
-  if (shortsWrap) {
-    if (tabName !== 'shorts') {
-      shortsWrap.querySelectorAll('iframe').forEach(f => {
-        if (f.src) {f.dataset.savedSrc = f.src;f.src = '';}
-      });
-    } else {
-      if (shortsQueue.length > 0) buildShortsFrame(shortsQueue[shortsIndex], false);
-    }
-  }
-}
-
-// About:Blank cloaker
-function aboutblank() {
-  const siteUrl = window.location.href;
-  const win = window.open('about:blank', '_blank');
-  if (!win || win.closed) {alert('Please allow popups for this feature.');return;}
-  const doc = win.document;
-  doc.title = "My Drive";
-  const iframe = doc.createElement('iframe');
-  Object.assign(iframe.style, { position: 'fixed', top: 0, bottom: 0, left: 0, right: 0, width: '100%', height: '100%', border: 'none', margin: 0, padding: 0, overflow: 'hidden', zIndex: 999999 });
-  iframe.src = siteUrl;
-  doc.body.style.margin = '0';
-  doc.body.appendChild(iframe);
-}
+   
 
 // ─── FADE-IN (one-shot, lightweight) ─────────────────
 document.addEventListener("DOMContentLoaded", () => {
